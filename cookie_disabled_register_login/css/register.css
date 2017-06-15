@@ -1,0 +1,37 @@
+/*register.css*/
+*{
+	margin:0;
+	padding: 0;
+	font-size: 16px;
+}
+body{
+	background: url("");
+}
+div#maxRegister{
+	margin:20px auto;
+	width: 500px;
+	height:400px;
+	outline: 1px solid red;
+	text-align: 50px;
+	line-height: 40px;
+	font-size: 25px;
+}
+div#maxRegister>form>span{
+	width:100px;
+	height: 20px;
+	font-size: 16px;
+	color:white;
+}
+div input{
+	width: 200px;
+	height: 25px;
+}
+input[name="sex"]{
+	width: 60px;
+	height: 25px;
+}
+input#register{
+	width: 200px;
+	height: 35px;
+	outline: 1px solid ;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JsonP解决方案</title>
+</head>
+<body>
+	<!-- <script>
+		//定义函数 获取其他服务器数据
+		var make=function(data){
+			alert(data.name+data.age);
+		};
+		// 第二步  其他服务器php 文件接收上述函数名，输出执行该函数的js语句
+		var script=document.createElement("script");
+		script.setAttribute("src","http://localhost/jsonP.php?callback=make");
+		document.body.appendChild(script);
+	</script> -->
+	<!-- 第一步 其他服务器js文件执行上述函数 -->
+	<!-- <script src="http://localhost/xx.js"></script> -->
+	<!-- 第二步 其他服务器php 文件接收上述函数名，输出执行该函数的js语句 -->
+	<!-- <script src="http://localhost/jsonP.php?callback=make"></script> -->
+
+
+<!-- jquery 实现jsonp -->
+<script src="jquery-1.11.3.js"></script>
+
+<script>
+	// function make(data){
+	// 	alert(data.name+"--"+data.age);
+	// }
+	// jsonp 与ajax 没有任何关系 
+	$.ajax({
+		url:"http://localhost/jsonP.php",
+		dataType:"jsonp",
+		// jsonp:"cc",// callback 表示传递回调函数名的参数名
+		// jsonpCallback:"make",//表示回调函数
+		success:function(data){
+			alert(data.name+data.age);
+		}
+	});
+
+</script>
+</body>
+</html>

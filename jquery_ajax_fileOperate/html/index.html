@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax-fileupload</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<script src="../js/jquery-1.11.3.js"></script>
+</head>
+<body> 
+<div id="fileoperate">
+	<progress value="0" max="100" ></progress><span></span>
+	<h6></h6>
+	<form action="../php/upload.php" name="file_upload_form" method="post" enctype="multipart/form-data">
+		<input type="file" name="img" id="fileup">
+		<input id="btn" type="button" value="选择文件上传">
+	</form>
+	<img id="showpic" src="" alt="">
+</div> 
+	<script src="../js/file.js"></script>
+
+</body>
+</html>

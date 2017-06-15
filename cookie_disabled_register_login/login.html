@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>login_page</title>
+	<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<span id="houtaiaccount">登录后台管理账户</span><br>
+<span id="registeraccount">没有账户！先注册</span>
+	<div id="maxLogin">
+		<form action="php/login.php" method="POST">
+			用户名：<input class="logindata" type="text" name="user_login"  id="user_login" autofocus><br>
+			密&nbsp;&nbsp;&nbsp;码：<input class="logindata"  id="pwd_login" type="password" name="pwd_login"><br>
+			<input type="submit" id="login" value="登&nbsp;&nbsp;&nbsp;录" disabled>
+			<input type="button" id="jpregister">
+			<input type="button"  id="adminAccount">
+		</form>
+	</div>
+	<script src="js/login.js"></script>
+</body>
+</html>

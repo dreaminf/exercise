@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日历</title>
+	<style>
+		#data{
+			border-collapse: collapse;
+			margin-top:20px;
+		}
+		#date thead td{
+			border:1px solid #000;
+			background-color:#ccc;
+			width:80px;
+			height: 30px;
+			text-align: center;
+		}
+		#date tbody td{
+			border:1px solid #666;
+			height: 25px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	年份
+	<select  id="year" onchange="showDate(this)">
+		<script>
+			for(var i=0;i<200;i++){
+				document.write("<option value='"+(1900+i)+"'>"+(1900+i)+"</option>")
+			}
+		</script>
+
+	</select>
+	月份
+	<select  id="months" onchange="showDate(this)">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+	</select>
+
+	<table id="date">
+		<thead>
+			<tr>
+				<td>日</td>
+				<td>一</td>
+				<td>二</td>
+				<td>三</td>
+				<td>四</td>
+				<td>五</td>
+				<td>六</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<script>
+		showDate();
+		function showDate(){
+				var y=year.value;
+				var m=months.value; //保存month所选做的值
+				var d=new Date(y,m-1,1);
+				console.log(d);
+				var days=getDays(y,m);
+				var count=1;//保存实际的日期值的初始化
+				var arr=new Array();
+				console.log(arr);
+				var day=d.getDay();//星期，0~6；
+				for(var i=0;i<42;i++){
+					if(i<day||count>days){
+						arr.push('');
+					}else{
+						arr.push(count++);
+					}
+				}
+
+				console.log(day);
+				console.log(days);
+
+				var tds=date.querySelectorAll("tbody>tr>td");
+				for(var i=0;i<tds.length;i++){
+					tds[i].innerHTML=arr[i];
+				}
+		}
+		//判断月份对应的天数，包括闰年的判断
+		function getDays(y,m){
+			var days;
+			if(m==2){
+				if((y%4==0 && y%100!=0)||(y%100==0 && y%400==0)){
+					days=29;
+				}else{
+					days=28;
+				}
+			}else if(m==4||m==6||m==9||m==11){
+				days=30;
+			}else{
+				days=31;
+			}
+
+			return days;
+		}
+	</script>
+</body>
+</html>

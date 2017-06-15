@@ -1,0 +1,130 @@
+<!-- 购物车.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		table{
+			width:600px;text-align: center;
+			border-collapse: collapse;
+		}
+		td,th{
+			border:1px solid #000;
+		}
+		td[colspan="3"]{text-align: right}
+	</style>
+</head>
+<body>
+	<table id="data">
+		<thead>
+			<tr>
+				<th>商品名称</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th>小计</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>iphone6</td>
+				<td>&yen;4488.00</td>
+				<td>
+					<button onclick="cals(this)">-</button>
+					<span>1</span>
+					<button onclick="cals(this)">+</button>
+				</td>
+				<td>&yen;4488.00</td>
+			</tr>
+			<tr>
+				<td>iphone6plus</td>
+				<td>&yen;5288.00</td>
+				<td>
+					<button onclick="cals(this)">-</button>
+					<span>1</span>
+					<button onclick="cals(this)">+</button>
+				</td>
+				<td>&yen;5288.00</td>
+			</tr>
+			<tr>
+				<td>oppo</td>
+				<td>&yen;2288.00</td>
+				<td>
+					<button onclick="cals(this)">-</button>
+					<span>1</span>
+					<button onclick="cals(this)">+</button>
+				</td>
+				<td>&yen;2288.00</td>
+			</tr>
+			<tr>
+				<td>vivo</td>
+				<td>&yen;1588.00</td>
+				<td>
+					<button onclick="cals(this)">-</button>
+					<span>1</span>
+					<button onclick="cals(this)">+</button>
+				</td>
+				<td>&yen;1588.00</td>
+			</tr>
+
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">Total:</td>
+				<td>&yen;13652.00</td>
+			</tr>
+		</tfoot>
+	</table>
+	<script>
+		// function cals(temp){
+		// 	var td=temp.parentNode;
+		// 	var span=td.querySelector("span");
+		// 	var n=Number(span.innerHTML);
+		// 	if(temp.innerHTML=="+"){
+		// 		n++;
+		// 	}
+		// 	if(temp.innerHTML=='-'){
+		// 		if(n>1){
+		// 			n--;
+		// 		}
+		// 	}
+		// 	span.innerHTML=n;
+		// 	console.log(n);
+
+		// 	var a=td.parentNode.querySelector("td:nth-child(2)");
+		// 		console.log(a);
+		// }
+
+
+		// var arr8=document.querySelectorAll("#data>tbody>tr>td:last-child");
+		// console.log(arr8[2]);
+		
+
+
+		function cals(btn){
+
+			var td=btn.parentNode;
+			var span=td.querySelector("span");
+			console.log(span.innerHTML);
+			var n=parseInt(span.innerHTML);
+			n+=btn.innerHTML=='+'?1:n==1?0:-1;
+			span.innerHTML=n;
+			// 计算小结
+			// previousElementSibling 前一个兄弟元素
+			// nextElementSibling 后一个兄弟元素
+			var price=parseFloat(td.previousElementSibling.innerHTML.slice(1));
+			td.nextElementSibling.innerHTML="&yen;"+(price*n).toFixed(2);
+
+			//计算总和
+			var tds=data.querySelectorAll("tbody>tr>td:last-child");
+			for(var i=0,sum=0;i<tds.length;i++){
+				sum+=parseFloat(tds[i].innerHTML.slice(1));
+			}
+
+			data.querySelector("tfoot>tr>td:last-child").innerHTML="&yen;"+sum.toFixed(2);
+		} 
+		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax-fileupload</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body> 
+<div id="fileoperate">
+	<progress value="0" max="100"></progress><span></span>
+	<h6></h6>
+	<form action="../php/upload.php" name="file_upload_form" method="post" enctype="multipart/form-data">
+		<input type="file" name="img">
+		<input id="btn" type="button" value="选择文件上传">
+	</form>
+	<img id="showpic" src="" alt="">
+</div> 
+	<script>
+		var percent=document.querySelector("span");
+		var showper=document.querySelector("progress");
+		var showstatus=document.querySelector("h6");
+		file_upload_form.img.onchange=function(){
+			var xhr=new XMLHttpRequest();
+			xhr.upload.onprogress=function(e){
+				if(e.lengthComputable){
+					percent.innerHTML=(e.loaded/e.total)*100+"%";
+					showper.value=(e.loaded/e.total)*100;
+				}
+			}
+			xhr.open("post","../php/upload.php",true);
+			//formdata 生成的第一种方式
+			//var formdata=new FormData();
+			//formdata.append(file_upload_form.img);
+			//formdata 生成的第二种方式
+			var formdata=new FormData(file_upload_form);
+			xhr.send(formdata);
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					if(xhr.response.code != 200){
+						showstatus.innerHTML=xhr.response.msg;
+						showstatus.style.color="red";
+						console.log(xhr.response.msg);
+					}else{
+						showstatus.innerHTML=xhr.response.msg;
+						showstatus.style.color="green";
+						console.log(xhr.response.msg);
+						showpic.src=xhr.response.path;
+					}
+				}
+			}
+
+			xhr.responseType="json";
+		} 
+	</script>
+
+	<script src="../js/file.js"></script>
+</body>
+</html>

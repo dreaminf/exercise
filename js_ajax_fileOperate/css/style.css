@@ -1,0 +1,26 @@
+
+#fileoperate{
+	margin:0 auto;
+	text-align: center;
+}
+input[type="file"]{
+	display: none;
+}
+input[type="button"]{
+	width:200px;
+	height: 40px;
+	font-size: 25px;
+}
+span{
+	font-size: 16px;
+}
+h6{
+	margin:10px auto;
+	font-size:18px;
+	color:green;
+}
+progress{
+	display: inline-block;
+	width: 800px;
+	height: 25px;
+}
