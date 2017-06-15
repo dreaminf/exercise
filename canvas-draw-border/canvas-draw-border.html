@@ -1,0 +1,70 @@
+<!-- canvas_画图板_zuoye.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas_画图板_zuoye</title>
+	<link rel="stylesheet" href="css/canvasboard.css">
+</head>
+<body>
+	<div id="max">
+	<div name="caidanlan" id="titlebox">
+		<div id="file">
+			<div id="opertion">
+				<h5>曲线绘制使用说明</h5>
+				<div>
+					<h6>二次贝塞尔曲线:</h6>
+					<p>鼠标左键按下，获取曲线起始点；鼠标左键按下后按住Ctrl键滑动，松开Ctrl键后获取控制点；鼠标左键按下后按住Shift键滑动，松开后Shift键后获取结束点，鼠标左键松开绘图完成！</p>
+					<h6>三次贝塞尔:</h6>
+					<p>鼠标左键按下，获取曲线起始点；鼠标左键按下后按住Ctrl键滑动，松开Ctrl键后获取第一个控制点；鼠标左键按下后按住Shift键滑动，松开后Shift键后获取点第二个控制点；鼠标左键按下后按住Alt键滑动，松开后Alt键获取结束点，鼠标左键松开绘图完成！</p>
+				</div>
+			</div>
+			<div id="tools">
+				<h5>工具</h5>
+				<span  id="eraser" onclick="drawstate(this)"><img src="images/eraser.png" alt=""></span>
+				<span id="pencil" onclick="drawstate(this)">铅笔</span>
+				<button id="clerapic" onclick="clearPIC();">画板清空</button>
+			</div>
+		</div>
+		<div style="height:90%;float:left;margin-top:5px;margin-right:5px;margin-left:5px;
+		border:1px solid gray"></div>
+		<div id="shap">
+			<h5>形状选择</h5>
+			<div id="iner_shap">
+				<span id="line" onclick="drawstate(this)" value="1"><img src="images/line.png" alt=""></span>
+				<span id="ercicurve" onclick="drawstate(this)"><img src="images/erciquxian.png" alt=""></span>
+				<span id="circle" onclick="drawstate(this)"><img src="images/circle.png" alt=""></span>
+				<span id="roundmap" onclick="drawstate(this)"><img src="images/roundmap.png" alt=""></span>
+				<span id="rectline" onclick="drawstate(this)"><img src="images/rectline.png" alt=""></span>
+				<span id="rectmap" onclick="drawstate(this)"><img src="images/rectmap.png" alt=""></span>
+				<span id="sancicurve" onclick="drawstate(this)"><img src="images/sanciquxian.png" alt="自由曲线"></span>
+				<span id="triangle" onclick="drawstate(this)"><img src="images/triangle.png" alt=""></span>
+			</div>
+		</div>
+		<div style="height:90%;float:left;margin-top:5px;margin-right:5px;margin-left:5px;border:1px solid gray"></div>
+		<div id="color_linwidth">
+			<div id="Scolor">
+				<form action="">
+					颜色选择<input type="color" id="color">
+				</form>
+			</div>
+			<div id="Sline">
+				<form action="">
+					线宽选择<select name="" id="select">
+						<option value="1">1px</option>
+						<option value="2">2px</option>
+						<option value="3">3px</option>
+						<option value="4">4px</option>
+						<option value="5">5px</option>
+						<option value="6">6px</option>
+						<option value="7">7px</option>
+					</select>
+				</form>
+			</div>
+		</div>
+	</div>
+	<canvas id="canvas" width="850px" height="500px"></canvas>
+	</div>
+	<script src="js/canvasboard.js"></script>
+</body>
+</html>
